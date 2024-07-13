@@ -12,7 +12,7 @@ echo "___TOKEN___" > /data/params/d/ZzTelegramToken
 echo "___CHAT_ID___" > /data/params/d/ZzTelegramChatID
 
 3. Run this command in OpenPilot SSH:
-curl -fsSL https://gist.githubusercontent.com/reopenpilot/openpilot-tuner/raw/openpilot-tuner.sh | sudo tee /data/continue.sh > /dev/null
+curl -fsSL https://raw.githubusercontent.com/reopenpilot/openpilot-tuner/main/openpilot-tuner.sh | sudo tee /data/continue.sh > /dev/null
 '
 
 TOKEN=$(cat /data/params/d/ZzTelegramToken 2>/dev/null || echo "")
