@@ -2,7 +2,10 @@
 
 Automatically modify code at startup to fine-tune openpilot, sunnypilot, or frogpilot.
 
-
+## Features
+1. Prevent the official from capturing drive camera recordings.
+2. Lower the standby shutdown voltage from 11.8V to 11.2V to extend the duration of openpilot in the offload state.
+3. Contributions for additional features are welcome
 
 ## Steps
 Skip steps 1 & 2 if not using Telegram notifications.
