@@ -8,8 +8,8 @@ VBATT_SHUTDOWN_THRESHOLD=11.2
 # ONLY FOR FrogPilot (HOURS)
 DEVICE_SHUTDOWN_TIME=99999
 
-TOKEN=$(cat /data/params/d/ZzTelegramToken 2>/dev/null || echo "")
-CHAT_ID=$(cat /data/params/d/ZzTelegramChatID 2>/dev/null || echo "")
+TOKEN=$(cat /data/params/ZzTelegramToken 2>/dev/null || echo "")
+CHAT_ID=$(cat /data/params/ZzTelegramChatID 2>/dev/null || echo "")
 TELEGRAM_URL="https://api.telegram.org/bot$TOKEN/sendMessage"
 
 send_telegram() {
