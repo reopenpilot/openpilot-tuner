@@ -1,19 +1,12 @@
 #!/bin/bash
 
-: '
-Skip steps 1 & 2 if not using Telegram notifications.
+# Visit this URL for usage instructions
+# https://github.com/reopenpilot/openpilot-tuner/
 
-1. Get a Telegram bot token & chat_id:
-https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a
-
-2. Replace ___TOKEN___ and ___CHAT_ID___ in the commands below with your token & chat_id. Run these in OpenPilot SSH:
-
-echo "___TOKEN___" > /data/params/d/ZzTelegramToken
-echo "___CHAT_ID___" > /data/params/d/ZzTelegramChatID
-
-3. Run this command in OpenPilot SSH:
-curl -fsSL https://raw.githubusercontent.com/reopenpilot/openpilot-tuner/main/openpilot-tuner.sh | sudo tee /data/continue.sh > /dev/null
-'
+# Set shutdown voltage
+VBATT_SHUTDOWN_THRESHOLD = 11.2
+# ONLY FOR FrogPilot (HOURS)
+DEVICE_SHUTDOWN_TIME = 99999
 
 TOKEN=$(cat /data/params/d/ZzTelegramToken 2>/dev/null || echo "")
 CHAT_ID=$(cat /data/params/d/ZzTelegramChatID 2>/dev/null || echo "")
@@ -55,8 +48,12 @@ errors=""
     find .git -exec touch -t 200001010000 {} \; 2>&1
 
     sed -i "s/if len(file.fn) == 0/if 'dcamera' in file.fn or len(file.fn) == 0/" $filename_athenad 2>&1
-    sed -i 's/VBATT_PAUSE_CHARGING = 11.8/VBATT_PAUSE_CHARGING = 11.2/' $filename_powermonitoring 2>&1
+    sed -i "s/VBATT_PAUSE_CHARGING = 11.8/VBATT_PAUSE_CHARGING = $VBATT_SHUTDOWN_THRESHOLD/" $filename_powermonitoring 2>&1
     sed -i 's/should_shutdown |= (self.car_battery_capacity_uWh <= 0)/#should_shutdown |= (self.car_battery_capacity_uWh <= 0)/' $filename_powermonitoring 2>&1
+
+    sed -i 's/frogpilot_toggles.low_voltage_shutdown/0/' $filename_powermonitoring 2>&1
+    sed -i "s/frogpilot_toggles.device_shutdown_time/$DEVICE_SHUTDOWN_TIME/" $filename_powermonitoring 2>&1
+
 } 2>&1 | {
     while IFS= read -r line; do
         errors+="$line\n"
