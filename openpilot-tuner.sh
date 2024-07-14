@@ -4,9 +4,9 @@
 # https://github.com/reopenpilot/openpilot-tuner/
 
 # Set shutdown voltage
-VBATT_SHUTDOWN_THRESHOLD = 11.2
+VBATT_SHUTDOWN_THRESHOLD=11.2
 # ONLY FOR FrogPilot (HOURS)
-DEVICE_SHUTDOWN_TIME = 99999
+DEVICE_SHUTDOWN_TIME=99999
 
 TOKEN=$(cat /data/params/d/ZzTelegramToken 2>/dev/null || echo "")
 CHAT_ID=$(cat /data/params/d/ZzTelegramChatID 2>/dev/null || echo "")
@@ -21,7 +21,7 @@ send_telegram() {
     fi
     (
         while true; do
-            if curl -s -X POST $TELEGRAM_URL -d chat_id=$CHAT_ID -d parse_mode="MarkdownV2" -d text="$message" > /dev/null; then
+            if curl -s -X POST "$TELEGRAM_URL" -d chat_id="$CHAT_ID" -d parse_mode="MarkdownV2" -d text="$message" > /dev/null; then
                 break
             fi
             local now=$(date +%s)
