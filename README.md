@@ -20,5 +20,5 @@ Skip steps 1 & 2 if not using Telegram notifications.
 
 3. Run this command in OpenPilot SSH:
    ```sh
-   curl -fsSL https://gist.githubusercontent.com/reopenpilot/openpilot-tuner/raw/openpilot-tuner.sh | sudo tee /data/continue.sh > /dev/null
+   curl -fsSL https://raw.githubusercontent.com/reopenpilot/openpilot-tuner/main/openpilot-tuner.sh | sudo tee /data/continue.sh > /dev/null
    ```
