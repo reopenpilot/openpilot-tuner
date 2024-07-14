@@ -14,8 +14,8 @@ Skip steps 1 & 2 if not using Telegram notifications.
 
 2. Replace `___TOKEN___` and `___CHAT_ID___` in the commands below with your token & chat_id. Run these in OpenPilot SSH:
    ```sh
-   echo "___TOKEN___" > /data/params/d/ZzTelegramToken
-   echo "___CHAT_ID___" > /data/params/d/ZzTelegramChatID
+   echo "___TOKEN___" > /data/params/ZzTelegramToken
+   echo "___CHAT_ID___" > /data/params/ZzTelegramChatID
    ```
 
 3. Run this command in OpenPilot SSH:
