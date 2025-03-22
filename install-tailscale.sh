@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# bash <(curl -fsSL https://raw.githubusercontent.com/reopenpilot/openpilot-tuner/install-tailscale.sh)
+# bash <(curl -fsSL https://raw.githubusercontent.com/reopenpilot/openpilot-tuner/main/install-tailscale.sh)
 #
 
 set -e
