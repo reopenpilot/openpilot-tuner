@@ -35,8 +35,5 @@ sudo systemctl start tailscaled
 echo "⬆️ Bringing Tailscale up..."
 sudo tailscale up
 
-echo "⌨️ Press any key to continue..."
+echo "⌨️ Press any key to reboot system..."
 read -n 1 -s -r -p ""
-
-echo "🔁 Rebooting system..."
-sudo reboot
