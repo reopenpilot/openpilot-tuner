@@ -5,6 +5,9 @@
 
 # Set shutdown voltage
 VBATT_SHUTDOWN_THRESHOLD=11.2
+
+MAX_TIME_OFFROAD_S=$(cat /data/params/ZzShutdownTime 2>/dev/null || echo "100*365*24*3600")
+
 # ONLY FOR FrogPilot (HOURS)
 DEVICE_SHUTDOWN_TIME=99999
 
@@ -49,6 +52,9 @@ errors=""
 
     sed -i "s/if len(file.fn) == 0/if 'dcamera' in file.fn or len(file.fn) == 0/" $filename_athenad 2>&1
     sed -i "s/VBATT_PAUSE_CHARGING = 11.8/VBATT_PAUSE_CHARGING = $VBATT_SHUTDOWN_THRESHOLD/" $filename_powermonitoring 2>&1
+
+    sed -i "s/MAX_TIME_OFFROAD_S = .*/MAX_TIME_OFFROAD_S = $MAX_TIME_OFFROAD_S/" $filename_powermonitoring 2>&1
+
     sed -i 's/should_shutdown |= (self.car_battery_capacity_uWh <= 0)/#should_shutdown |= (self.car_battery_capacity_uWh <= 0)/' $filename_powermonitoring 2>&1
 
     sed -i 's/frogpilot_toggles.low_voltage_shutdown/0/' $filename_powermonitoring 2>&1
