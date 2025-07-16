@@ -7,7 +7,7 @@ Automatically modify code at startup to fine-tune openpilot, sunnypilot, or frog
 2. Lower the standby shutdown voltage from 11.8V to 11.2V to extend the duration of openpilot in the offroad state.
 3. Contributions for additional features are welcome
 
-## Installation
+## Tuner Installation
 Skip steps 1 & 2 if not using Telegram notifications.
 1. Get a Telegram bot token & chat_id:
    [Telegram Bot Token & Chat ID Guide](https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a)
@@ -21,4 +21,9 @@ Skip steps 1 & 2 if not using Telegram notifications.
 3. Run this command in OpenPilot SSH:
    ```sh
    curl -fsSL https://raw.githubusercontent.com/reopenpilot/openpilot-tuner/main/openpilot-tuner.sh | sudo tee /data/continue.sh > /dev/null
+   ```
+
+## Tailscale Installation
+   ```sh
+   bash <(curl -fsSL https://raw.githubusercontent.com/reopenpilot/openpilot-tuner/main/install-tailscale.sh)
    ```
