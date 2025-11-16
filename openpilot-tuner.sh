@@ -8,8 +8,8 @@ VBATT_SHUTDOWN_THRESHOLD=11.2
 
 MAX_TIME_OFFROAD_S=$(cat /data/params/ZzShutdownTime 2>/dev/null || echo "100*365*24*3600")
 
-# ONLY FOR FrogPilot (HOURS)
-DEVICE_SHUTDOWN_TIME=99999
+# ONLY FOR FrogPilot (SECONDS)
+DEVICE_SHUTDOWN_TIME=9999999999
 
 TOKEN=$(cat /data/params/ZzTelegramToken 2>/dev/null || echo "")
 CHAT_ID=$(cat /data/params/ZzTelegramChatID 2>/dev/null || echo "")
